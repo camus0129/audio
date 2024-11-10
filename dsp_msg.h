@@ -28,10 +28,10 @@ enum DSP_CMD_TYPE_E
     DSP_CMD_OUTPUT_MIX_SET,
     DSP_CMD_MASTER_VOLUME_SET, // 5
     DSP_CMD_CHANNEL_VOLUME_SET,
-    DSP_EQ_SET,
-    DSP_DRC_SET,
-    DSP_AGL_SET,
-    DSP_ANALOG_GAIN_SET,
+    DSP_CMD_EQ_SET,
+    DSP_CMD_DRC_SET,
+    DSP_CMD_AGL_SET,
+    DSP_CMD_ANALOG_GAIN_SET,
 };
 
 void dsp_msg_send(unsigned char cmd_type, unsigned int param1, unsigned int param2, unsigned int param3);

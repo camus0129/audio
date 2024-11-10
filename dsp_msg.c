@@ -19,14 +19,59 @@ void *dsp_write_pthread(void *arg)
             printf("rcv_msg: cmd_type = %d,param1= %d, param2 = %d,param3 = %d\n", rcv_msg.cmd_type, rcv_msg.param1, rcv_msg.param2, rcv_msg.param3);
             switch (rcv_msg.cmd_type)
             {
-            case 0:
+            case DSP_CMD_INIT:
             {
                 printf("dsp init cmd\n");
                 break;
             }
-            case 1:
+            case DSP_CMD_SLEEP:
             {
                 printf("dsp sleep cmd\n");
+                break;
+            }
+            case DSP_CMD_WAKP_UP:
+            {
+                printf("dsp wakeup cmd\n");
+                break;
+            }
+            case DSP_CMD_INPUT_MIX_SET:
+            {
+                printf("dsp input mix cmd\n");
+                break;
+            }
+            case DSP_CMD_OUTPUT_MIX_SET:
+            {
+                printf("dsp output mix cmd\n");
+                break;
+            }
+            case DSP_CMD_MASTER_VOLUME_SET:
+            {
+                printf("dsp master vol cmd\n");
+                break;
+            }
+            case DSP_CMD_CHANNEL_VOLUME_SET:
+            {
+                printf("dsp channel vol cmd\n");
+                break;
+            }
+            case DSP_CMD_EQ_SET:
+            {
+                printf("dsp eq st cmd\n");
+                break;
+            }
+            case DSP_CMD_DRC_SET:
+            {
+                printf("dsp drc set cmd\n");
+                break;
+            }
+            case DSP_CMD_AGL_SET:
+            {
+                printf("dsp agl cmd\n");
+                break;
+            }
+            case DSP_CMD_ANALOG_GAIN_SET:
+            {
+                printf("dsp analog cmd\n");
                 break;
             }
             default:
