@@ -1,7 +1,8 @@
 
 #include <pthread.h>
 #include "dsp_msg.h"
-extern int msgid;
+key_t dsp_msg_key;
+int msgid;
 void *dsp_write_pthread(void *arg)
 {
     while (1)
@@ -22,7 +23,6 @@ void *dsp_write_pthread(void *arg)
 }
 int dsp_msg_handle_thread_create(void)
 {
-#if 0
     pthread_t dsp_write_pid;
     // get ipc msg key
     dsp_msg_key = ftok(DSP_MSG_KEY, 20);
@@ -44,11 +44,9 @@ int dsp_msg_handle_thread_create(void)
         }
     }
     return 0;
-#endif
 }
 void dsp_msg_sent(unsigned char cmd_type, unsigned int param1, unsigned int param2, unsigned int param3)
 {
-#if 0
     static DSP_MSG_T test_msg;
     memset(&test_msg, 0, sizeof(test_msg));
     test_msg.mtype = 1;
@@ -61,5 +59,4 @@ void dsp_msg_sent(unsigned char cmd_type, unsigned int param1, unsigned int para
     {
         printf("dsp msg sent fail\n");
     }
-#endif
 }
