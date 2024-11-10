@@ -16,7 +16,25 @@ void *dsp_write_pthread(void *arg)
         }
         else
         {
-            printf("rcv_msg = %d %d,%d\n", rcv_msg.param1, rcv_msg.param2, rcv_msg.param3);
+            printf("rcv_msg: cmd_type = %d,param1= %d, param2 = %d,param3 = %d\n", rcv_msg.cmd_type, rcv_msg.param1, rcv_msg.param2, rcv_msg.param3);
+            switch (rcv_msg.cmd_type)
+            {
+            case 0:
+            {
+                printf("dsp init cmd\n");
+                break;
+            }
+            case 1:
+            {
+                printf("dsp sleep cmd\n");
+                break;
+            }
+            default:
+            {
+                printf("unknown cmd type = %d\n", rcv_msg.cmd_type);
+                break;
+            }
+            }
         }
         sleep(1);
     }
@@ -45,11 +63,11 @@ int dsp_msg_handle_thread_create(void)
     }
     return 0;
 }
-void dsp_msg_sent(unsigned char cmd_type, unsigned int param1, unsigned int param2, unsigned int param3)
+void dsp_msg_send(unsigned char cmd_type, unsigned int param1, unsigned int param2, unsigned int param3)
 {
     static DSP_MSG_T test_msg;
     memset(&test_msg, 0, sizeof(test_msg));
-    test_msg.mtype = 1;
+    test_msg.mtype = 1; // fixed mtype = 1
     test_msg.cmd_type = cmd_type;
     test_msg.param1 = param1;
     test_msg.param2 = param2;
