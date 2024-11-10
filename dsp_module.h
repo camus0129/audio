@@ -11,7 +11,7 @@ typedef struct
     void (*input_mix_set)(unsigned int);
     void (*output_mix_set)(unsigned int);
     void (*master_volume_set)(unsigned int);
-    void (*channel_volume_set)(unsigned int);
+    void (*channel_volume_set)(unsigned int, unsigned int);
     void (*eq_set)(unsigned int);
     void (*drc_set)(unsigned int);
     void (*agl_set)(unsigned int);
@@ -28,7 +28,7 @@ void dsp_wake_up(unsigned int mode);
 void dsp_input_mix_set(unsigned int mode);
 void dsp_output_mix_set(unsigned int mode);
 void dsp_master_volume_set(unsigned int gain);
-void dsp_channel_volume_set(unsigned int gain);
+void dsp_channel_volume_set(unsigned int channel, unsigned int gain);
 void dsp_eq_set(unsigned int mode);
 void dsp_drc_set(unsigned int mode);
 void dsp_agl_set(unsigned int mode);

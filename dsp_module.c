@@ -59,9 +59,9 @@ void dsp_master_volume_set(unsigned int gain)
     dsp_module->master_volume_set(gain);
 }
 
-void dsp_channel_volume_set(unsigned int gain)
+void dsp_channel_volume_set(unsigned int channel, unsigned int gain)
 {
-    dsp_module->channel_volume_set(gain);
+    dsp_module->channel_volume_set(channel, gain);
 }
 
 void dsp_eq_set(unsigned int mode)
