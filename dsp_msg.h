@@ -14,9 +14,9 @@ typedef struct
 {
     long mtype;
     unsigned char cmd_type;
-    unsigned int param1;
-    unsigned int param2;
-    unsigned int param3;
+    int param1;
+    int param2;
+    int param3;
 } DSP_MSG_T;
 
 enum DSP_CMD_TYPE_E
@@ -28,13 +28,18 @@ enum DSP_CMD_TYPE_E
     DSP_CMD_OUTPUT_MIX_SET,
     DSP_CMD_MASTER_VOLUME_SET, // 5
     DSP_CMD_CHANNEL_VOLUME_SET,
+    DSP_CMD_MUTE_SET,
+    DSP_CMD_UNMUTE_SET,
+    DSP_CMD_BASS_SET,
+    DSP_CMD_TREBLE_SET, // 10
+    DSP_CMD_CHANNEL_TEST_SET,
     DSP_CMD_EQ_SET,
     DSP_CMD_DRC_SET,
     DSP_CMD_AGL_SET,
-    DSP_CMD_ANALOG_GAIN_SET,
+    DSP_CMD_ANALOG_GAIN_SET, // 15
 };
 
-void dsp_msg_send(unsigned char cmd_type, unsigned int param1, unsigned int param2, unsigned int param3);
+void dsp_msg_send(unsigned char cmd_type, int param1, int param2, int param3);
 int dsp_msg_handle_thread_create(void);
 void *dsp_write_pthread(void *arg);
 

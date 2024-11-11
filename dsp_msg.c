@@ -1,8 +1,11 @@
 
 #include <pthread.h>
 #include "dsp_msg.h"
+#include "dsp_module.h"
+
 key_t dsp_msg_key;
 int msgid;
+
 void *dsp_write_pthread(void *arg)
 {
     while (1)
@@ -21,42 +24,63 @@ void *dsp_write_pthread(void *arg)
             {
             case DSP_CMD_INIT:
             {
-                printf("dsp init cmd\n");
+                printf("dsp init set cmd\n");
+                // dsp_init();
                 break;
             }
             case DSP_CMD_SLEEP:
             {
-                printf("dsp sleep cmd\n");
+                printf("dsp sleep set cmd\n");
                 break;
             }
             case DSP_CMD_WAKP_UP:
             {
-                printf("dsp wakeup cmd\n");
+                printf("dsp wakeup set cmd\n");
                 break;
             }
             case DSP_CMD_INPUT_MIX_SET:
             {
-                printf("dsp input mix cmd\n");
+                printf("dsp input mix set cmd\n");
                 break;
             }
             case DSP_CMD_OUTPUT_MIX_SET:
             {
-                printf("dsp output mix cmd\n");
+                printf("dsp output mix set cmd\n");
                 break;
             }
             case DSP_CMD_MASTER_VOLUME_SET:
             {
-                printf("dsp master vol cmd\n");
+                printf("dsp master vol set cmd\n");
                 break;
             }
             case DSP_CMD_CHANNEL_VOLUME_SET:
             {
-                printf("dsp channel vol cmd\n");
+                printf("dsp channel vol set cmd\n");
+                break;
+            }
+            case DSP_CMD_MUTE_SET:
+            {
+                printf("dsp mute set cmd\n");
+                break;
+            }
+            case DSP_CMD_UNMUTE_SET:
+            {
+                printf("dsp unmute set cmd\n");
+                break;
+            }
+            case DSP_CMD_BASS_SET:
+            {
+                printf("dsp bass set cmd\n");
+                break;
+            }
+            case DSP_CMD_TREBLE_SET:
+            {
+                printf("dsp treble set cmd\n");
                 break;
             }
             case DSP_CMD_EQ_SET:
             {
-                printf("dsp eq st cmd\n");
+                printf("dsp eq set cmd\n");
                 break;
             }
             case DSP_CMD_DRC_SET:
@@ -66,12 +90,12 @@ void *dsp_write_pthread(void *arg)
             }
             case DSP_CMD_AGL_SET:
             {
-                printf("dsp agl cmd\n");
+                printf("dsp agl set cmd\n");
                 break;
             }
             case DSP_CMD_ANALOG_GAIN_SET:
             {
-                printf("dsp analog cmd\n");
+                printf("dsp analog gain set cmd\n");
                 break;
             }
             default:
@@ -108,7 +132,7 @@ int dsp_msg_handle_thread_create(void)
     }
     return 0;
 }
-void dsp_msg_send(unsigned char cmd_type, unsigned int param1, unsigned int param2, unsigned int param3)
+void dsp_msg_send(unsigned char cmd_type, int param1, int param2, int param3)
 {
     static DSP_MSG_T test_msg;
     memset(&test_msg, 0, sizeof(test_msg));

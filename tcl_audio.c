@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "dsp_msg.h"
+#include "dsp_msg_api.h"
 
 int main(void)
 {
@@ -17,7 +17,7 @@ int main(void)
         while (1)
         {
             static unsigned int i = 0;
-            dsp_msg_send(1, i, i, i);
+            tcl_dsp_init();
             i++;
             sleep(1);
         }
