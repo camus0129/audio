@@ -1,5 +1,5 @@
-#ifndef __DSP_DRV_I2C_H__
-#define __DSP_DRV_I2C_H__
+#ifndef __DSP_DRV_GPIO_H__
+#define __DSP_DRV_GPIO_H__
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

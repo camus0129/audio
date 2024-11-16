@@ -1,4 +1,4 @@
-#include "dsp_drv_i2c.h"
+#include "dsp_drv_gpio.h"
 
 #define SYSFS_GPIO_EXPORT "/sys/class/gpio/export"
 
